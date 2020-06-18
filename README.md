@@ -1,4 +1,7 @@
-yrm -- YARN registry manager
+Nyrm -- YARN/NPM registry manager
+
+Forked from [i5ting/yrm](https://github.com/i5ting/yrm) ---> Forked from [Pana/nrm](https://github.com/Pana/nrm)
+
 ===
 
 [![NPM version][npm-image]][npm-url]
@@ -13,6 +16,7 @@ $ npm install -g yrm
 ```
 
 ## Example
+
 ```
 $ yrm ls
 
@@ -56,12 +60,12 @@ Usage: yrm [options] [command]
 
 ## Registries
 
-* [npm](https://www.npmjs.org)
-* [cnpm](http://cnpmjs.org)
-* [nodejitsu](https://www.nodejitsu.com)
-* [taobao](http://npm.taobao.org/)
-* [rednpm](http://npm.mirror.cqupt.edu.cn)
-* [yarn](https://registry.yarnpkg.com)
+- [npm](https://www.npmjs.org)
+- [cnpm](http://cnpmjs.org)
+- [nodejitsu](https://www.nodejitsu.com)
+- [taobao](http://npm.taobao.org/)
+- [rednpm](http://npm.mirror.cqupt.edu.cn)
+- [yarn](https://registry.yarnpkg.com)
 
 ## Notice
 
@@ -69,11 +73,11 @@ When you use an other registry, you can not use the `publish` command.
 
 ## TODO
 
-* When publish proxy to npm official registry
+- When publish proxy to npm official registry
 
 ## LICENSE
-MIT
 
+MIT
 
 [npm-image]: https://img.shields.io/npm/v/yrm.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/yrm

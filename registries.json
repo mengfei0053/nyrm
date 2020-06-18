@@ -11,6 +11,10 @@
         "home": "https://npm.taobao.org",
         "registry": "https://registry.npm.taobao.org/"
     },
+    "tencent": {
+        "home": "https://mirrors.cloud.tencent.com/npm/",
+        "registry": "https://mirrors.cloud.tencent.com/npm/"
+    },
     "nj": {
         "home": "https://www.nodejitsu.com",
         "registry": "https://registry.nodejitsu.com/"

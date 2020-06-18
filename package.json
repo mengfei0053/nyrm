@@ -1,5 +1,5 @@
 {
-  "name": "yrm",
+  "name": "nyrm",
   "version": "1.0.5",
   "description": "NPM registry manager can help you easy and fast switch between different npm registries, now include: cnpm, taobao, nj(nodejitsu), rednpm, edunpm",
   "bin": {
@@ -7,30 +7,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/i5ting/yrm.git"
+    "url": "git://github.com/mengfei0053/nyrm.git"
   },
   "scripts": {
-    "star": "npm star yrm"
+    "star": "npm star nyrm"
   },
   "keywords": [
+    "YARN",
     "NPM",
     "registry"
   ],
-  "author": "i5ting",
+  "author": "mengfei0053",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/i5ting/yrm/issues"
+    "url": "https://github.com/mengfei0053/nyrm.git/issues"
   },
-  "homepage": "https://github.com/i5ting/yrm",
+  "homepage": "https://github.com/mengfei0053/nyrm.git",
   "dependencies": {
     "async": "^1.5.2",
+    "axios": "^0.19.2",
     "commander": "^2.9.0",
     "extend": "^3.0.0",
     "ini": "^1.1.0",
     "node-echo": "^0.1.1",
-    "npm": "^3.10.3",
     "only": "0.0.2",
-    "open": "0.0.5",
-    "request": "^2.72.0"
+    "open": "0.0.5"
   }
 }
