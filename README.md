@@ -1,4 +1,4 @@
-Nyrm -- YARN/NPM registry manager
+YNRM -- YARN/NPM registry manager
 
 Forked from [i5ting/yrm](https://github.com/i5ting/yrm) ---> Forked from [Pana/nrm](https://github.com/Pana/nrm)
 
@@ -6,19 +6,19 @@ Forked from [i5ting/yrm](https://github.com/i5ting/yrm) ---> Forked from [Pana/n
 
 [![NPM version][npm-image]][npm-url]
 
-`yrm` can help you easy and fast switch between different npm registries,
-now include: `npm`, `cnpm`, `taobao`, `nj(nodejitsu)`, `rednpm`, `yarn`.
+`ynrm` can help you easy and fast switch between different npm registries,
+now include: `npm`, `cnpm`, `taobao`,`tencent`,`nj(nodejitsu)`, `rednpm`, `yarn`.
 
 ## Install
 
 ```
-$ npm install -g yrm
+$ npm install -g ynrm
 ```
 
 ## Example
 
 ```
-$ yrm ls
+$ ynrm ls
 
 * npm -----  https://registry.npmjs.org/
   cnpm ----  http://r.cnpmjs.org/
@@ -31,7 +31,7 @@ $ yrm ls
 ```
 
 ```
-$ yrm use cnpm  //switch registry to cnpm
+$ ynrm use cnpm  //switch registry to cnpm
 
     Registry has been set to: http://r.cnpmjs.org/
 
@@ -40,7 +40,7 @@ $ yrm use cnpm  //switch registry to cnpm
 ## Usage
 
 ```
-Usage: yrm [options] [command]
+Usage: ynrm [options] [command]
 
   Commands:
 
@@ -63,6 +63,7 @@ Usage: yrm [options] [command]
 - [npm](https://www.npmjs.org)
 - [cnpm](http://cnpmjs.org)
 - [nodejitsu](https://www.nodejitsu.com)
+- [tencent](https://mirrors.cloud.tencent.com/npm/)
 - [taobao](http://npm.taobao.org/)
 - [rednpm](http://npm.mirror.cqupt.edu.cn)
 - [yarn](https://registry.yarnpkg.com)
@@ -79,5 +80,5 @@ When you use an other registry, you can not use the `publish` command.
 
 MIT
 
-[npm-image]: https://img.shields.io/npm/v/yrm.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/yrm
+[npm-image]: https://img.shields.io/npm/v/ynrm.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/ynrm
