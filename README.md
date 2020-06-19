@@ -2,12 +2,14 @@ YNRM -- YARN/NPM registry manager
 
 Forked from [i5ting/yrm](https://github.com/i5ting/yrm) ---> Forked from [Pana/nrm](https://github.com/Pana/nrm)
 
+ynrm will set up both npm registy and yarn registry
+
 ===
 
 [![NPM version][npm-image]][npm-url]
 
 `ynrm` can help you easy and fast switch between different npm registries,
-now include: `npm`, `cnpm`, `taobao`,`tencent`,`nj(nodejitsu)`, `rednpm`, `yarn`.
+now include: `npm`, `cnpm`, `taobao`,`tencent`,`nj(nodejitsu)`, `rednpm`,`skimdb`,`edunpm`,`yarn`.
 
 ## Install
 
@@ -30,10 +32,14 @@ $ ynrm ls
 
 ```
 
-```
-$ ynrm use cnpm  //switch registry to cnpm
+```shell
+# ynrm will set up both npm registy and yarn registry
+# switch registry to taobao registry
+$ ynrm use cnpm
 
-    Registry has been set to: http://r.cnpmjs.org/
+    YARN Registry has been set to: https://registry.npm.taobao.org/
+
+    NPM Registry has been set to: https://registry.npm.taobao.org/
 
 ```
 
