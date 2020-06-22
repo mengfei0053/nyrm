@@ -75,13 +75,13 @@ class Ynrm {
 
   static only(registry: string) {
     const allRegistries = Ynrm.getAllRegistry();
-    return Object.keys(allRegistries).reduce((res, current) => {
+    return Object.keys(allRegistries).reduce((preVal, current) => {
       if (current === registry) {
         return {
-          [current]: allRegistries[current as keyof typeof res],
+          [current]: allRegistries[current as keyof typeof preVal],
         };
       }
-      return {};
+      return preVal;
     }, {});
   }
 
