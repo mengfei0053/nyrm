@@ -5,7 +5,11 @@
     [
       "@babel/preset-env",
       {
-        "modules": "commonjs"
+        "useBuiltIns": "usage",
+        "modules": "commonjs",
+        "corejs": {
+          "version": 3
+        }
       }
     ]
   ]

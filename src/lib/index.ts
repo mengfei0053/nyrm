@@ -1,5 +1,4 @@
 import Registry, { RegistryInitParams } from "./Registry";
-import npm from "npm";
 import fs from "fs";
 import path from "path";
 import ini from "ini";
@@ -7,17 +6,40 @@ import axios from "axios";
 import async from "async";
 import open from "open";
 import extend from "extend";
-import registries from "../../registries.json";
+import registries from "../registries";
+import type npmStatic from "npm";
+import { exec } from "child_process";
+
+type NpmConfig = typeof npmStatic["config"]["defs"]["defaults"];
 
 class Ynrm {
   registries: Registry[] = [];
 
-  static YRMRC = path.join(process.env.HOME, ".yrmrc");
-  static YARNRC = path.join(process.env.HOME, ".yarnrc");
+  static YRMRC = path.join(process.env.HOME as string, ".yrmrc");
+  static YARNRC = path.join(process.env.HOME as string, ".yarnrc");
 
   constructor() {
     const presetRegistries = Ynrm.GetPresetRegistries();
     this.init(presetRegistries);
+  }
+
+  static getNpm() {
+    return new Promise<typeof npmStatic>((resolve, reject) => {
+      exec("npm root -g", (err, stdout, stderr) => {
+        if (err) {
+          Ynrm.exit(err);
+          reject(err);
+          return;
+        }
+        if (stderr) {
+          Ynrm.exit(new Error(stderr));
+          reject(new Error(stderr));
+          return;
+        }
+        const npm = require(require.resolve("npm", { paths: [stdout] }));
+        resolve(npm as typeof npmStatic);
+      });
+    });
   }
 
   private init(params: RegistryInitParams[]) {
@@ -30,8 +52,8 @@ class Ynrm {
     presets = Object.keys(registries).map((item) => {
       return {
         name: item,
-        home: registries[item].home,
-        registry: registries[item].registry,
+        home: registries[item as keyof typeof registries].home,
+        registry: registries[item as keyof typeof registries].registry,
       };
     });
     return presets;
@@ -39,7 +61,8 @@ class Ynrm {
   /*
    * get current registry
    */
-  static GetCurrentRegistry(cbk: (currentRegistry: string) => void) {
+  static async GetCurrentRegistry(cbk: (currentRegistry: string) => void) {
+    const npm = await Ynrm.getNpm();
     npm.load(function (err, conf) {
       if (err) return Ynrm.exit(err);
       cbk(npm.config.get("registry"));
@@ -48,6 +71,18 @@ class Ynrm {
 
   static printErr(err: Error) {
     console.error("an error occured: " + err);
+  }
+
+  static only(registry: string) {
+    const allRegistries = Ynrm.getAllRegistry();
+    return Object.keys(allRegistries).reduce((res, current) => {
+      if (current === registry) {
+        return {
+          [current]: allRegistries[current as keyof typeof res],
+        };
+      }
+      return {};
+    }, {});
   }
 
   /*
@@ -73,7 +108,10 @@ class Ynrm {
       : {};
   }
 
-  static setCustomRegistry(config, cbk) {
+  static async setCustomRegistry(
+    config: NpmConfig,
+    cbk: (err: NodeJS.ErrnoException | null) => void
+  ) {
     fs.writeFile(Ynrm.YRMRC, ini.stringify(config), cbk);
   }
 
@@ -115,19 +153,20 @@ class Ynrm {
           ]);
         }
       );
-
-      // 同时更改npm的源
-      npm.load(function (err) {
-        if (err) return Ynrm.exit(err);
-
-        npm.commands.config(["set", "registry", registry.registry], function (
-          err,
-          data
-        ) {
+      Ynrm.getNpm().then((npm) => {
+        // 同时更改npm的源
+        npm.load(function (err: any) {
           if (err) return Ynrm.exit(err);
-          console.log("                        ");
-          var newR = npm.config.get("registry");
-          Ynrm.printMsg(["", "   NPM Registry has been set to: " + newR, ""]);
+
+          npm.commands.config(["set", "registry", registry.registry], function (
+            err: any,
+            data: any
+          ) {
+            if (err) return Ynrm.exit(err);
+            console.log("                        ");
+            var newR = npm.config.get("registry");
+            Ynrm.printMsg(["", "   NPM Registry has been set to: " + newR, ""]);
+          });
         });
       });
     } else {
@@ -138,7 +177,8 @@ class Ynrm {
   onDel(name: string) {
     var customRegistries = Ynrm.getCustomRegistry();
     if (!customRegistries.hasOwnProperty(name)) return;
-    Ynrm.GetCurrentRegistry(function (cur) {
+
+    Ynrm.GetCurrentRegistry((cur) => {
       if (cur === customRegistries[name].registry) {
         this.onUse("npm");
       }
@@ -152,11 +192,11 @@ class Ynrm {
 
   onHome(name: string, browser: string) {
     var allRegistries = Ynrm.getAllRegistry();
-    var home = allRegistries[name] && allRegistries[name].home;
+    var home: string = allRegistries[name] && allRegistries[name].home;
     if (home) {
-      var args = [home];
-      if (browser) args.push(browser);
-      open.apply(null, args);
+      open(home, {
+        app: browser,
+      });
     }
   }
 
@@ -176,18 +216,16 @@ class Ynrm {
     });
   }
 
-  onTest(registry) {
-    console.log(registry, "registry");
+  onTest(registry: string | undefined) {
+    const allRegistries = Ynrm.getAllRegistry();
 
-    var allRegistries = Ynrm.getAllRegistry();
-
-    var toTest;
+    let toTest: Partial<typeof allRegistries> = {};
 
     if (registry) {
       if (!allRegistries.hasOwnProperty(registry)) {
         return;
       }
-      // toTest = only(allRegistries, registry);
+      toTest = Ynrm.only(registry);
     } else {
       toTest = allRegistries;
     }
@@ -216,7 +254,7 @@ class Ynrm {
             });
           });
       },
-      function (err, results) {
+      function (err, results: any) {
         Ynrm.GetCurrentRegistry(function (cur) {
           var msg = [""];
           results.forEach(function (result: any) {

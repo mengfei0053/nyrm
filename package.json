@@ -1,9 +1,9 @@
 {
   "name": "ynrm",
-  "version": "1.0.1",
+  "version": "1.1.0-beta.1",
   "description": "NPM registry manager can help you easy and fast switch between different npm registries, now include: cnpm, taobao, nj(nodejitsu), rednpm, edunpm",
   "bin": {
-    "ynrm": "./cli.js"
+    "ynrm": "./dist/cli/index.js"
   },
   "repository": {
     "type": "git",
@@ -14,12 +14,16 @@
   },
   "scripts": {
     "build": "rimraf ./dist && babel ./src  -d dist --extensions \".ts\"",
+    "prepublish": "yarn build",
     "star": "npm star ynrm"
   },
   "keywords": [
     "YARN",
     "NPM",
     "registry"
+  ],
+  "files": [
+    "dist/"
   ],
   "author": "mengfei0053",
   "license": "MIT",
@@ -31,9 +35,9 @@
     "async": "^1.5.2",
     "axios": "^0.19.2",
     "commander": "^2.9.0",
+    "core-js": "^3.6.5",
     "extend": "^3.0.0",
     "ini": "^1.1.0",
-    "only": "0.0.2",
     "open": "^7.0.4"
   },
   "devDependencies": {
