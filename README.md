@@ -4,7 +4,13 @@ Forked from [i5ting/yrm](https://github.com/i5ting/yrm) ---> Forked from [Pana/n
 
 ynrm will set up both npm registy and yarn registry
 
-===
+## Ynrm vs. Nrm/Yrm
+
+- Ynrm rewrite using typescript.
+- Remove npm from dependency.Ynrm gets npm global path by `npm root -g`, directly introduces global npm.
+- Replace the request with axios
+
+---
 
 [![NPM version][npm-image]][npm-url]
 

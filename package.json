@@ -1,7 +1,7 @@
 {
   "name": "ynrm",
   "version": "1.1.0-beta.3",
-  "description": "NPM registry manager can help you easy and fast switch between different npm registries, now include: cnpm, taobao, nj(nodejitsu), rednpm, edunpm",
+  "description": "NPM/YARN registry manager can help you easy and fast switch between different npm registries, now include: cnpm, taobao, nj(nodejitsu), rednpm, edunpm.",
   "bin": {
     "ynrm": "./dist/cli/index.js"
   },
@@ -12,9 +12,15 @@
   "engines": {
     "node": ">=8"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "scripts": {
     "build": "rimraf ./dist && babel ./src  -d dist --extensions \".ts\"",
     "prepublish": "yarn build",
+    "co": "commit",
     "star": "npm star ynrm"
   },
   "keywords": [
@@ -47,11 +53,15 @@
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-typescript": "^7.10.1",
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
+    "@commitlint/prompt-cli": "^9.0.1",
     "@types/async": "^3.2.3",
     "@types/extend": "^3.0.1",
     "@types/ini": "^1.3.30",
     "@types/node": "^14.0.13",
     "@types/npm": "^2.0.31",
+    "husky": "^4.2.5",
     "rimraf": "^3.0.2"
   }
 }
