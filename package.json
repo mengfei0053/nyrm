@@ -1,6 +1,6 @@
 {
   "name": "ynrm",
-  "version": "1.1.0-beta.3",
+  "version": "1.1.0-beta.4",
   "description": "NPM/YARN registry manager can help you easy and fast switch between different npm registries, now include: cnpm, taobao, nj(nodejitsu), rednpm, edunpm.",
   "bin": {
     "ynrm": "./dist/cli/index.js"
