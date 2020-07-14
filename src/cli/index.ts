@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 import program from "commander";
 import Ynrm from "../lib/index";
+import osenv from "osenv";
 import PKG from "../../package.json";
 
 const ynrm = new Ynrm();
-
+const home = osenv.home();
+process.env.HOME = process.env.HOME || home;
 program.version(PKG.version);
 
 program

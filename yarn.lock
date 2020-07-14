@@ -1027,6 +1027,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/osenv@^0.1.0":
+  version "0.1.0"
+  resolved "http://maven-nexus.sephora.cn:8081/repository/npm-group/@types/osenv/-/osenv-0.1.0.tgz#73f1baf35c920e8c4addcb59c8e85d58113151bb"
+  integrity sha1-c/G681ySDoxK3ctZyOhdWBExUbs=
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -2657,6 +2662,24 @@ opencollective-postinstall@^2.0.2:
   version "2.0.3"
   resolved "https://registry.npmjs.org/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz#7a0fff978f6dbfa4d006238fbac98ed4198c3259"
   integrity sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==
+
+os-homedir@^1.0.0:
+  version "1.0.2"
+  resolved "http://maven-nexus.sephora.cn:8081/repository/npm-group/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
+  integrity sha1-/7xJiDNuDoM94MFox+8VISGqf7M=
+
+os-tmpdir@^1.0.0:
+  version "1.0.2"
+  resolved "http://maven-nexus.sephora.cn:8081/repository/npm-group/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
+  integrity sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
+
+osenv@^0.1.5:
+  version "0.1.5"
+  resolved "http://maven-nexus.sephora.cn:8081/repository/npm-group/osenv/-/osenv-0.1.5.tgz#85cdfafaeb28e8677f416e287592b5f3f49ea410"
+  integrity sha1-hc36+uso6Gd/QW4odZK18/SepBA=
+  dependencies:
+    os-homedir "^1.0.0"
+    os-tmpdir "^1.0.0"
 
 p-finally@^2.0.0:
   version "2.0.1"
