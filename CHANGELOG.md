@@ -1,3 +1,11 @@
+## [2.0.2](https://github.com/mengfei0053/ynrm/compare/v2.0.1...v2.0.2) (2020-07-14)
+
+
+### Bug Fixes
+
+* **lib/index.ts:** fix resolve npm err on windows ([a163232](https://github.com/mengfei0053/ynrm/commit/a163232056fb57682763e594ce72b6850acedb86))
+* **src:** fix can't find process.env.HOME on windows ([3db3e28](https://github.com/mengfei0053/ynrm/commit/3db3e28a5b670f11cc15c82cf1c90c9e365a5c07))
+
 ## [2.0.2-beta.2](https://github.com/mengfei0053/ynrm/compare/v2.0.2-beta.1...v2.0.2-beta.2) (2020-07-14)
 
 
