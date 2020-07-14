@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: git checkout master
+      - run: git checkout beta
       - run: yarn
       - run: yarn release
         env:
