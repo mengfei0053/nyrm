@@ -6,6 +6,7 @@ import axios from "axios";
 import async from "async";
 import osenv from "osenv";
 import open from "open";
+import which from "which";
 import extend from "extend";
 import registries from "../registries";
 import type npmStatic from "npm";
@@ -40,8 +41,17 @@ class Ynrm {
           reject(new Error(stderr));
           return;
         }
-        const npm = require(require.resolve("npm", { paths: [stdout] }));
-        resolve(npm as typeof npmStatic);
+        which("node", (err, nodePath) => {
+          if (err) {
+            reject(err);
+          } else {
+            const parseNodePath = path.parse(nodePath || "");
+            const npm = require(require.resolve("npm", {
+              paths: [stdout, parseNodePath.dir],
+            }));
+            resolve(npm as typeof npmStatic);
+          }
+        });
       });
     });
   }
