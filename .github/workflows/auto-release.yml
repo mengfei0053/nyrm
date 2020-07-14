@@ -1,11 +1,19 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Release
+name: auto-release
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
+      - beta
+  pull_request:
+    types: [closed]
+    branches: [master, beta]
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -14,13 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: git checkout beta
       - run: yarn
       - run: yarn release
         env:
