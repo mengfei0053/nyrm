@@ -1,36 +1,77 @@
 {
-  "name": "yrm",
-  "version": "1.0.5",
-  "description": "NPM registry manager can help you easy and fast switch between different npm registries, now include: cnpm, taobao, nj(nodejitsu), rednpm, edunpm",
+  "name": "ynrm",
+  "version": "2.0.0",
+  "description": "NPM/YARN registry manager can help you easy and fast switch between different npm registries, now include: cnpm, taobao, nj(nodejitsu), rednpm, edunpm.",
   "bin": {
-    "yrm": "./cli.js"
+    "ynrm": "./dist/cli/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/i5ting/yrm.git"
+    "url": "git://github.com/mengfei0053/ynrm.git"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "scripts": {
-    "star": "npm star yrm"
+    "build": "rimraf ./dist && babel ./src  -d dist --extensions \".ts\"",
+    "prepare": "yarn build",
+    "release": "semantic-release",
+    "prerelease": "yarn build",
+    "co": "commit",
+    "star": "npm star ynrm"
   },
   "keywords": [
+    "YARN",
     "NPM",
     "registry"
   ],
-  "author": "i5ting",
+  "files": [
+    "dist/"
+  ],
+  "author": "mengfei0053",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/i5ting/yrm/issues"
+    "url": "https://github.com/mengfei0053/ynrm.git/issues"
   },
-  "homepage": "https://github.com/i5ting/yrm",
+  "homepage": "https://github.com/mengfei0053/ynrm.git",
   "dependencies": {
-    "async": "^1.5.2",
-    "commander": "^2.9.0",
+    "async": "^3.2.0",
+    "axios": "^0.19.2",
+    "commander": "^5.1.0",
+    "core-js": "^3.6.5",
     "extend": "^3.0.0",
     "ini": "^1.1.0",
-    "node-echo": "^0.1.1",
-    "npm": "^3.10.3",
-    "only": "0.0.2",
-    "open": "0.0.5",
-    "request": "^2.72.0"
+    "open": "^7.0.4",
+    "osenv": "^0.1.5",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/prompt-cli": "^9.1.1",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/npm": "^7.0.5",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "@types/async": "^3.2.3",
+    "@types/extend": "^3.0.1",
+    "@types/ini": "^1.3.30",
+    "@types/node": "^14.0.22",
+    "@types/npm": "^2.0.31",
+    "@types/osenv": "^0.1.0",
+    "husky": "^4.2.5",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^17.1.1"
   }
 }

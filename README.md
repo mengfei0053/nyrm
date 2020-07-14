@@ -1,20 +1,32 @@
-yrm -- YARN registry manager
-===
+YNRM -- YARN/NPM registry manager
+
+Forked from [i5ting/yrm](https://github.com/i5ting/yrm) ---> Forked from [Pana/nrm](https://github.com/Pana/nrm)
+
+ynrm will set up both npm registy and yarn registry
+
+## Ynrm vs. Nrm/Yrm
+
+- Ynrm rewrite using typescript.
+- Remove npm from dependency.Ynrm gets npm global path by `npm root -g`, directly introduces global npm.
+- Replace the request with axios
+
+---
 
 [![NPM version][npm-image]][npm-url]
 
-`yrm` can help you easy and fast switch between different npm registries,
-now include: `npm`, `cnpm`, `taobao`, `nj(nodejitsu)`, `rednpm`, `yarn`.
+`ynrm` can help you easy and fast switch between different npm registries,
+now include: `npm`, `cnpm`, `taobao`,`tencent`,`nj(nodejitsu)`, `rednpm`,`skimdb`,`edunpm`,`yarn`.
 
 ## Install
 
 ```
-$ npm install -g yrm
+$ npm install -g ynrm
 ```
 
 ## Example
+
 ```
-$ yrm ls
+$ ynrm ls
 
 * npm -----  https://registry.npmjs.org/
   cnpm ----  http://r.cnpmjs.org/
@@ -26,17 +38,21 @@ $ yrm ls
 
 ```
 
-```
-$ yrm use cnpm  //switch registry to cnpm
+```shell
+# ynrm will set up both npm registy and yarn registry
+# switch registry to taobao registry
+$ ynrm use cnpm
 
-    Registry has been set to: http://r.cnpmjs.org/
+    YARN Registry has been set to: https://registry.npm.taobao.org/
+
+    NPM Registry has been set to: https://registry.npm.taobao.org/
 
 ```
 
 ## Usage
 
 ```
-Usage: yrm [options] [command]
+Usage: ynrm [options] [command]
 
   Commands:
 
@@ -56,12 +72,13 @@ Usage: yrm [options] [command]
 
 ## Registries
 
-* [npm](https://www.npmjs.org)
-* [cnpm](http://cnpmjs.org)
-* [nodejitsu](https://www.nodejitsu.com)
-* [taobao](http://npm.taobao.org/)
-* [rednpm](http://npm.mirror.cqupt.edu.cn)
-* [yarn](https://registry.yarnpkg.com)
+- [npm](https://www.npmjs.org)
+- [cnpm](http://cnpmjs.org)
+- [nodejitsu](https://www.nodejitsu.com)
+- [tencent](https://mirrors.cloud.tencent.com/npm/)
+- [taobao](http://npm.taobao.org/)
+- [rednpm](http://npm.mirror.cqupt.edu.cn)
+- [yarn](https://registry.yarnpkg.com)
 
 ## Notice
 
@@ -69,11 +86,11 @@ When you use an other registry, you can not use the `publish` command.
 
 ## TODO
 
-* When publish proxy to npm official registry
+- When publish proxy to npm official registry
 
 ## LICENSE
+
 MIT
 
-
-[npm-image]: https://img.shields.io/npm/v/yrm.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/yrm
+[npm-image]: https://img.shields.io/npm/v/ynrm.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/ynrm
