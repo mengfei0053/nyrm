@@ -4,11 +4,15 @@ import path from "path";
 import ini from "ini";
 import axios from "axios";
 import async from "async";
+import osenv from "osenv";
 import open from "open";
 import extend from "extend";
 import registries from "../registries";
 import type npmStatic from "npm";
 import { exec } from "child_process";
+
+const home = osenv.home();
+process.env.HOME = process.env.HOME || home;
 
 type NpmConfig = typeof npmStatic["config"]["defs"]["defaults"];
 
