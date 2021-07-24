@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/mengfei0053/ynrm/compare/v2.0.2...v2.0.3) (2021-07-24)
+
+
+### Bug Fixes
+
+* **src:** fix del ([1651039](https://github.com/mengfei0053/ynrm/commit/16510394021a041d28998dcd545159e2e9f0bcef))
+
 ## [2.0.2](https://github.com/mengfei0053/ynrm/compare/v2.0.1...v2.0.2) (2020-07-14)
 
 
