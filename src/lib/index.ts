@@ -172,15 +172,19 @@ class Ynrm {
         npm.load(function (err: any) {
           if (err) return Ynrm.exit(err);
 
-          npm.commands.config(["set", "registry", registry.registry], function (
-            err: any,
-            data: any
-          ) {
-            if (err) return Ynrm.exit(err);
-            console.log("                        ");
-            var newR = npm.config.get("registry");
-            Ynrm.printMsg(["", "   NPM Registry has been set to: " + newR, ""]);
-          });
+          npm.commands.config(
+            ["set", "registry", registry.registry],
+            function (err: any, data: any) {
+              if (err) return Ynrm.exit(err);
+              console.log("                        ");
+              var newR = npm.config.get("registry");
+              Ynrm.printMsg([
+                "",
+                "   NPM Registry has been set to: " + newR,
+                "",
+              ]);
+            }
+          );
         });
       });
     } else {
@@ -188,7 +192,7 @@ class Ynrm {
     }
   }
 
-  onDel(name: string) {
+  onDel = (name: string) => {
     var customRegistries = Ynrm.getCustomRegistry();
     if (!customRegistries.hasOwnProperty(name)) return;
 
@@ -202,7 +206,7 @@ class Ynrm {
         Ynrm.printMsg(["", "    delete registry " + name + " success", ""]);
       });
     });
-  }
+  };
 
   onHome(name: string, browser: string) {
     var allRegistries = Ynrm.getAllRegistry();
