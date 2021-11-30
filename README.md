@@ -80,13 +80,9 @@ Usage: ynrm [options] [command]
 - [rednpm](http://npm.mirror.cqupt.edu.cn)
 - [yarn](https://registry.yarnpkg.com)
 
-## Notice
+## AbortME
 
-When you use an other registry, you can not use the `publish` command.
-
-## TODO
-
-- When publish proxy to npm official registry
+https://blog.mengfei0053.com
 
 ## LICENSE
 

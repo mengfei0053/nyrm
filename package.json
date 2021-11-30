@@ -37,7 +37,7 @@
   "bugs": {
     "url": "https://github.com/mengfei0053/ynrm.git/issues"
   },
-  "homepage": "https://github.com/mengfei0053/ynrm.git",
+  "homepage": "https://blog.mengfei0053.com/blog/npm-resource-manager",
   "dependencies": {
     "async": "^3.2.0",
     "axios": "^0.19.2",
