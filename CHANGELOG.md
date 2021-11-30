@@ -1,3 +1,5 @@
+## [2.0.4](https://github.com/mengfei0053/ynrm/compare/v2.0.3...v2.0.4) (2021-11-30)
+
 ## [2.0.3](https://github.com/mengfei0053/ynrm/compare/v2.0.2...v2.0.3) (2021-07-24)
 
 
